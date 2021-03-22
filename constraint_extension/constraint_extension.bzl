@@ -10,7 +10,7 @@ def _platform_extension_flag_impl(ctx):
         valid_build_setting = True
         for constraint in ctx.attr.target_compatible_with_extension:
             if not ctx.target_platform_has_constraint(constraint[platform_common.ConstraintValueInfo]):
-                valid_flag = False
+                valid_build_setting = False
         if not valid_build_setting:
             fail("None of the constraint values specified for extension are enabled")
     return [ConstraintValueExtensionInfo(value = ctx.build_setting_value)]
